@@ -80,8 +80,3 @@ M.toggle_peek = function()
 end
 
 return M
-
---[[ Example usage
-vim.api.nvim_create_user_command("TmuxPeek", toggle_tmux_peek, {})
-vim.keymap.set({ "n", "t" }, "<leader>tp", toggle_tmux_peek, { desc = "Toggle floating tmux window" })
---]]
