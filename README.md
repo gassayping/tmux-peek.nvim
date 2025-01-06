@@ -6,9 +6,9 @@ Quickly access a tmux window without changing windows. Inspired by tj's `floater
 
 `:TmuxPeek` opens a floating window with the leftmost tmux window opened.
 
-⚠️ tmux-peek.nvim uses terminal mode. When in terminal mode, use `<C-\><C-N>` to exit insert mode ⚠️
+`tmux-peek.nvim` uses terminal mode. When in terminal mode, use `<C-\><C-N>` to exit insert mode. *Use `:h terminal` for more information on terminal mode.*
 
-Use `:h terminal` for more information on terminal mode.
+⚠️ Using `tmux-peek.nvim` to open the same tmux window that neovim is open in will cause resizing issues
 
 ## Installation
 
@@ -46,3 +46,4 @@ It is recommended to add a keymap to easily toggle the floating tmux window
 ```lua
 vim.keymap.set({ "n", "t" }, "<leader>tp", require"tmux-peek".toggle_peek, { desc = "Toggle floating tmux window" })
 ```
+
