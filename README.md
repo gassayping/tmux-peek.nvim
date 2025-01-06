@@ -40,3 +40,9 @@ require("tmux-peek").setup({
     }
 })
 ```
+
+It is recommended to add a keymap to easily toggle the floating tmux window
+
+```lua
+vim.keymap.set({ "n", "t" }, "<leader>tp", require"tmux-peek".toggle_peek, { desc = "Toggle floating tmux window" })
+```
