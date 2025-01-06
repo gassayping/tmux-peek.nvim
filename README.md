@@ -33,10 +33,8 @@ require("tmux-peek").setup({
     dimensions = {
         width_pct = 0.5,
         height_pct = 0.3,
-    },
-    position = {
-        x_pos_pct = 0.5,
-        y_pos_pct = 0.9
+        col = 0.5,
+        row = 0.9
     }
 })
 ```
