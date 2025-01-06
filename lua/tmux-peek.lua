@@ -67,7 +67,6 @@ local function attach_to_tmux()
 		config.session_prefix .. session
 
 	vim.cmd.terminal(tmux_cmd)
-	vim.cmd.startinsert()
 end
 
 
@@ -81,6 +80,7 @@ M.toggle_peek = function()
 		if vim.bo[state.floating.buf].buftype ~= "terminal" then
 			attach_to_tmux()
 		end
+		vim.cmd.startinsert()
 	else
 		vim.api.nvim_win_hide(state.floating.win)
 	end
