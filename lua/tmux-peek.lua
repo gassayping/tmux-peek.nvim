@@ -52,6 +52,13 @@ end
 
 local function attach_to_tmux()
 	local tmux_var = vim.env.TMUX
+
+	if not tmux_var then
+		vim.api.nvim_err_writeln("TMUX env var not found")
+		vim.api.nvim_win_hide(state.floating.win)
+		return
+	end
+
 	local session = vim.split(tmux_var, ",")[3]
 
 	local tmux_cmd = "tmux new-session -A -t " ..
