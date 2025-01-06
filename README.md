@@ -1,6 +1,6 @@
 # `tmux-peek.nvim`
 
-Quickly access a tmux window without changing windows. Inspired by tj's `floaterminal` in [advent-of-nvim](https://github.com/tjdevries/advent-of-nvim)
+Get a view into a tmux window without leaving neovim. Useful for referencing your code as you read errors. Inspired by tj's `floaterminal` in [advent-of-nvim](https://github.com/tjdevries/advent-of-nvim)
 
 ## Usage
 
