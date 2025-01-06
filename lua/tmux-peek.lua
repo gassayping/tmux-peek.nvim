@@ -23,11 +23,11 @@ local config = {
 }
 
 local function create_floating_window(buf)
-	local width = math.floor(vim.o.columns * config.width_pct)
-	local height = math.floor(vim.o.lines * config.height_pct)
+	local width = math.floor(vim.o.columns * config.dimensions.width_pct)
+	local height = math.floor(vim.o.lines * config.dimensions.height_pct)
 
-	local col = math.floor((vim.o.columns - width) * config.x_pos_pct)
-	local row = math.floor((vim.o.lines - height) * config.y_pos_pct)
+	local col = math.floor((vim.o.columns - width) * config.position.x_pos_pct)
+	local row = math.floor((vim.o.lines - height) * config.position.y_pos_pct)
 
 	if not vim.api.nvim_buf_is_valid(buf) then
 		buf = vim.api.nvim_create_buf(false, true)
