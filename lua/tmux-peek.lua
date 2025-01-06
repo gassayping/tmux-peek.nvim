@@ -7,27 +7,54 @@ local state = {
 	}
 }
 
--- TODO: Allow whole numbers as well as percentages
 local config = {
 	session_prefix = "peek-",
 
 	dimensions = {
-		width_pct = 0.5,
-		height_pct = 0.3,
-	},
-
-	position = {
-		x_pos_pct = 0.5,
-		y_pos_pct = 0.9
+		width = 0.5,
+		height = 0.3,
+		col = 0.5,
+		row = 0.9
 	}
 }
 
-local function create_floating_window(buf)
-	local width = math.floor(vim.o.columns * config.dimensions.width_pct)
-	local height = math.floor(vim.o.lines * config.dimensions.height_pct)
+local function get_pos_and_size(opts)
+	local out = {}
+	opts = vim.tbl_extend('force', config.dimensions, opts)
+	print(vim.inspect(opts))
 
-	local col = math.floor((vim.o.columns - width) * config.position.x_pos_pct)
-	local row = math.floor((vim.o.lines - height) * config.position.y_pos_pct)
+	if opts.width < 1 or opts.height < 1 then
+		if not (opts.width < 1 and opts.height < 1) then
+			vim.api.nvim_err_writeln("Width and height must both be percentages or exact")
+			return nil
+		end
+		out.width = math.floor(vim.o.columns * opts.width)
+		out.height = math.floor(vim.o.lines * opts.height)
+	else
+		out.width = opts.width
+		out.height = opts.height
+	end
+
+	if opts.row < 1 or opts.col < 1 then
+		if not (opts.row < 1 and opts.col < 1) then
+			vim.api.nvim_err_writeln("Row and col must both be percentages or exact")
+			return nil
+		end
+		out.col = math.floor((vim.o.columns - out.width) * opts.col)
+		out.row = math.floor((vim.o.lines - out.height) * opts.row)
+	else
+		out.col = opts.col
+		out.row = opts.row
+	end
+
+	return out
+end
+
+local function create_floating_window(buf)
+	local dimensions = get_pos_and_size({})
+	if dimensions == nil then
+		return
+	end
 
 	if not vim.api.nvim_buf_is_valid(buf) then
 		buf = vim.api.nvim_create_buf(false, true)
@@ -36,10 +63,10 @@ local function create_floating_window(buf)
 	--- @type vim.api.keyset.win_config
 	local win_conf = {
 		relative = "editor",
-		col = col,
-		row = row,
-		width = width,
-		height = height,
+		col = dimensions.col,
+		row = dimensions.row,
+		width = dimensions.width,
+		height = dimensions.height,
 		border = "rounded",
 		style = "minimal",
 		title = "Tmux Peek",
