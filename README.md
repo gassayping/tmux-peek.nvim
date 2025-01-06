@@ -6,7 +6,7 @@ Quickly access a tmux window without changing windows. Inspired by tj's `floater
 
 `:TmuxPeek` opens a floating window with the leftmost tmux window opened.
 
-⚠️ tmux-peek.nvim uses terminal mode. When in terminal mode, use `<C-\><C-N>` to exit insert ⚠️
+⚠️ tmux-peek.nvim uses terminal mode. When in terminal mode, use `<C-\><C-N>` to exit insert mode ⚠️
 
 Use `:h terminal` for more information on terminal mode.
 
