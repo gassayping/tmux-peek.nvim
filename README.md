@@ -30,11 +30,16 @@ These are the default configuration options
 ```lua
 require("tmux-peek").setup({
     session_prefix = "peek-",
-    dimensions = {
-        width_pct = 0.5,
-        height_pct = 0.3,
+    win_config = {
+        width = 0.5,
+        height = 0.3,
         col = 0.5,
-        row = 0.9
+        row = 0.9,
+        relative = "editor",
+        border = "rounded",
+        style = "minimal",
+        title = "Tmux Peek",
+        title_pos = "center"
     }
 })
 ```
