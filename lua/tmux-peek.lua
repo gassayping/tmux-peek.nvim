@@ -48,8 +48,8 @@ local function get_pos_and_size(opts)
 			vim.api.nvim_err_writeln("Row and col must both be percentages or exact")
 			return nil
 		end
-		out.col = math.floor((vim.o.columns - out.width) * opts.col)
-		out.row = math.floor((vim.o.lines - out.height) * opts.row)
+		out.col = math.floor(vim.o.columns * opts.col)
+		out.row = math.floor(vim.o.lines * opts.row)
 	else
 		out.col = opts.col
 		out.row = opts.row

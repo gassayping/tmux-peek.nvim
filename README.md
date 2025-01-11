@@ -33,13 +33,13 @@ require("tmux-peek").setup({
     win_config = {
         width = 0.5,
         height = 0.3,
-        col = 0.5,
-        row = 0.9,
+        col = 0.25,
+        row = 0.7,
         relative = "editor",
         border = "rounded",
         style = "minimal",
         title = "Tmux Peek",
-        title_pos = "center"
+        title_pos = "center",
     }
 })
 ```
