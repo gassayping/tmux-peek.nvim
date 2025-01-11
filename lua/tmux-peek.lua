@@ -31,7 +31,7 @@ local config = {
 local function get_pos_and_size(opts)
 	local out = {}
 
-	if opts.width <= 1 or opts.height <= 1 then
+	if opts.width < 1 or opts.height < 1 then
 		if not (opts.width < 1 and opts.height < 1) then
 			vim.api.nvim_err_writeln("Width and height must both be percentages or exact")
 			return nil
@@ -43,7 +43,7 @@ local function get_pos_and_size(opts)
 		out.height = opts.height
 	end
 
-	if opts.row <= 1 or opts.col <= 1 then
+	if opts.row < 1 or opts.col < 1 then
 		if not (opts.row < 1 and opts.col < 1) then
 			vim.api.nvim_err_writeln("Row and col must both be percentages or exact")
 			return nil
