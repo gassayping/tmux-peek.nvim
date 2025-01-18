@@ -8,8 +8,8 @@ local state = {
 }
 
 ---@class tmux_peek_config
----@field session_prefix string
----@field win_config  vim.api.keyset.win_config
+---@field session_prefix? string
+---@field win_config?  vim.api.keyset.win_config
 
 ---@type tmux_peek_config
 local config = {
