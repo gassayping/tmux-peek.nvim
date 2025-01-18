@@ -9,7 +9,7 @@ local state = {
 
 ---@class tmux_peek_config
 ---@field session_prefix? string
----@field win_config?  vim.api.keyset.win_config
+---@field win_config? vim.api.keyset.win_config
 
 ---@type tmux_peek_config
 local config = {
@@ -98,13 +98,14 @@ end
 
 
 --- Set plugin config options
----@param opts tmux_peek_config
+---@param opts? tmux_peek_config
 M.setup = function(opts)
 	config = vim.tbl_deep_extend("force", config, opts or {})
 end
 
 --- Toggles the peek window
----@param opts tmux_peek_config Options for setting up the window
+---@param opts? tmux_peek_config Options for setting up the window
+---@param tmux_session? string Target session to connect to (defaults to current)
 M.toggle_peek = function(opts, tmux_session)
 	opts = vim.tbl_deep_extend("keep", opts or {}, config)
 
